@@ -7,7 +7,6 @@ Steps to complete:
 * Add collision to Hoppy and platforms
 * Procedurally generate platforms
 * Add death plane once floor passes boundary
-* Break up program.cpp into individual .cpp files and link with headers
 * Add main menu
 * Add sound effects/music
 * Add extra levels (optional)

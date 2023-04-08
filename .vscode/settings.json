@@ -9,4 +9,7 @@
     "terminal.integrated.shellArgs.windows": [
         "--login"
     ],
+    "files.associations": {
+        "iostream": "cpp"
+    },
 }

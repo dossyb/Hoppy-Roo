@@ -1,129 +1,14 @@
 #include "splashkit.h"
+#include "player.h"
+#include "platform.h"
 #include <iostream>
 #include <fstream>
 
-#define JUMP_HEIGHT -6
+#define JUMP_HEIGHT -10
 #define SPEED 5
 #define PLAYER_HEIGHT 125
 #define PLAYER_WIDTH 100
 #define START_HEIGHT 600
-
-enum player_state
-{
-    IDLE,
-    JUMP
-};
-
-enum player_direction
-{
-    RIGHT,
-    LEFT
-};
-
-enum platform_size
-{
-    EXTRA_SMALL,
-    SMALL,
-    MEDIUM,
-    LARGE,
-    EXTRA_LARGE
-};
-
-struct player_data
-{
-    double x;
-    double y;
-    double vel;
-    double acc;
-    double highest_y;
-    player_state state;
-    player_direction face;
-};
-
-struct platform_data
-{
-    double x;
-    double y;
-    platform_size size;
-};
-
-player_data new_player(double x, double y)
-{
-    player_data result;
-
-    result.x = x;
-    result.y = y;
-    result.vel = 0;
-    result.acc = 0.05;
-    result.highest_y = 0;
-    result.state = IDLE;
-    result.face = RIGHT;
-
-    return result;
-}
-
-platform_data new_platform(double x, double y, platform_size size)
-{
-    platform_data result;
-
-    result.x = x;
-    result.y = y;
-    result.size = size;
-
-    return result;
-}
-
-bitmap player_bitmap(const player_data &player)
-{
-    string bitmap_name;
-    bitmap_name = "player";
-
-    if (player.face == LEFT && player.state == IDLE)
-    {
-        bitmap_name += "-idle-l";
-    }
-    if (player.face == LEFT && player.state == JUMP)
-    {
-        bitmap_name += "-jump-l";
-    }
-    if (player.face == RIGHT && player.state == IDLE)
-    {
-        bitmap_name += "-idle-r";
-    }
-    if (player.face == RIGHT && player.state == JUMP)
-    {
-        bitmap_name += "-jump-r";
-    }
-
-    return bitmap_named(bitmap_name);
-}
-
-bitmap platform_bitmap(const platform_data &platform)
-{
-    string bitmap_name;
-    bitmap_name = "platform";
-
-    switch (platform.size)
-    {
-        case EXTRA_SMALL:
-            bitmap_name += "-xs";
-            break;
-        case MEDIUM:
-            bitmap_name += "-m";
-            break;
-        case LARGE:
-            bitmap_name += "-l";
-            break;
-        case EXTRA_LARGE:
-            bitmap_name += "-xl";
-            break;
-        case SMALL:
-        default:
-            bitmap_name += "-s";
-    }
-
-    return bitmap_named(bitmap_name);
-}
 
 void load_resources()
 {
@@ -142,7 +27,6 @@ void load_resources()
     load_font("game-font", "caslon.ttf");
     open_window("Hoppy Roo", 600, 800);
 }
-
 
 void handle_input(player_data &player)
 {
