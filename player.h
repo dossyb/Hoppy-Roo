@@ -16,6 +16,8 @@ struct player_data
 {
     double x;
     double y;
+    double width;
+    double height;
     double vel;
     double acc;
     double highest_y;

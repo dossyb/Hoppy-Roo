@@ -14,7 +14,9 @@ struct platform_data
     double x;
     double y;
     platform_size size;
+    double width;
+    double height;
 };
 
 platform_data new_platform(double x, double y, platform_size size);
-bitmap platform_bitmap(const platform_data &platform);
+bitmap platform_bitmap( platform_data &platform);

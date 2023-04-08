@@ -4,9 +4,7 @@ A Doodle Jump-inspired game written in C++ using the Splashkit library. You play
 Game is currently in a non-functional state - player entity and physics have been created as well as the environment. High score-keeping is also functional.
 
 Steps to complete:
-* Add collision to Hoppy and platforms
-* Procedurally generate platforms
-* Add death plane once floor passes boundary
+* Procedurally generate platforms (this will be hard)
 * Add main menu
 * Add sound effects/music
 * Add extra levels (optional)
